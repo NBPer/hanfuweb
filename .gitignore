@@ -1,0 +1,13 @@
+# idea
+./idea/
+
+# target
+target/
+
+
+# Compiled class files
+*.class
+ 
+# Log Files
+*.log
+

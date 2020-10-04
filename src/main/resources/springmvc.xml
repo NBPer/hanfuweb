@@ -21,11 +21,15 @@
   http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
+    <!--springmvc配置文件-->
+
     <!--使用注解驱动-->
     <mvc:annotation-driven/>
 
-    <!--扫描包路径-->
-    <context:component-scan base-package="com.jzt"/>
+    <!--扫描包路径:springmvc只处理controller层-->
+    <context:component-scan base-package="com.jzt">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!--配置视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -35,6 +39,12 @@
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!--过滤静态资源-->
+<!--    <mvc:resources mapping="/css/" location="/css/**" />
+    <mvc:resources mapping="/images/" location="/images/**" />
+    <mvc:resources mapping="/js/" location="/js/**" />-->
+
 
 
 </beans>

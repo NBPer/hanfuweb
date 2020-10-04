@@ -24,32 +24,33 @@
     <servlet-name>springDispatcherServlet</servlet-name>
   </filter-mapping>
 
+  <!--配置spring监听器：
+    作用：将spring的配置文件中内容加载到spring容器中
+    默认只加载WEB-INF目录下的applicationContext.xml文件-->
   <listener>
-    <listener-class>org.springframework.web.context.ContextCleanupListener</listener-class>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-
+  <!--设置配置文件路径-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring-mybatis.xml</param-value>
+    <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
 
   <!-- 用前端控制器初始化springmvc容器 -->
-  <!-- The front controller of this Spring Web application, responsible for
-      handling all application requests -->
   <servlet>
     <servlet-name>springDispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!--加载spring-mvc.xml配置文件-->
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring-mvc.xml</param-value>
+      <param-value>classpath:springmvc.xml</param-value>
     </init-param>
+    <!--启动该服务器，创建该servlet-->
     <load-on-startup>1</load-on-startup>
   </servlet>
-
-  <!-- Map all requests to the DispatcherServlet for handling -->
   <servlet-mapping>
     <servlet-name>springDispatcherServlet</servlet-name>
-    <url-pattern>*.do</url-pattern>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
 
 </web-app>

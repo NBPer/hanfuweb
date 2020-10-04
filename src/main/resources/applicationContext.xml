@@ -24,6 +24,11 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <!--引入properties文件-->
+    <bean id="placeholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"></property>
+    </bean>
+
     <!--spring整合mybatis框架-->
     <!--配置数据源-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -91,10 +96,7 @@
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
     </aop:config>
 
-<!--    &lt;!&ndash;引入properties文件&ndash;&gt;-->
-<!--    <bean id="placeholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-<!--        <property name="location" value="classpath:jdbc.properties"></property>-->
-<!--    </bean>-->
+
 
 
 

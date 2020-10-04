@@ -18,6 +18,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <spring.version>5.2.9.RELEASE</spring.version>
+    <log4j.version>2.11.2</log4j.version>
   </properties>
 
   <!-- 导入相关依赖 -->
@@ -94,6 +95,24 @@
       <version>1.2.47</version>
     </dependency>
 
+    <!--log4j日志-->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-web</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+
+    <!--junit单元测试-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

@@ -19,6 +19,12 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @RequestMapping("/hello")
+    public String sayHello(){
+        System.out.println("hello springmvc");
+        return "userlist";
+    }
+
     @RequestMapping("/findAll")
     public String findAll(){
         logger.info("表示层：查询所有用户");

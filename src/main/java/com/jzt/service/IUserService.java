@@ -9,9 +9,9 @@ public interface IUserService {
 
     UserEntity fineById(Integer id);
 
-    void save(UserEntity test);
+    void save(UserEntity user);
 
-    void update(UserEntity test);
+    void update(UserEntity user);
 
     void delete(Integer id);
 }

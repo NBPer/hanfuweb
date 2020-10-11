@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository("userDao")
 public interface IUserDao {
 
     @Select("select * from user")

@@ -8,34 +8,34 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements IUserService {
 
     @Autowired
-    private IUserDao testDao;
+    private IUserDao userDao;
 
     @Override
     public List<UserEntity> findAll() {
-        return testDao.findAll();
+        return userDao.findAll();
     }
 
     @Override
     public UserEntity fineById(Integer id) {
-        return testDao.fineById(id);
+        return userDao.fineById(id);
     }
 
     @Override
-    public void save(UserEntity test) {
-        testDao.save(test);
+    public void save(UserEntity user) {
+        userDao.save(user);
     }
 
     @Override
-    public void update(UserEntity test) {
-        testDao.update(test);
+    public void update(UserEntity user) {
+        userDao.update(user);
     }
 
     @Override
     public void delete(Integer id) {
-        testDao.delete(id);
+        userDao.delete(id);
     }
 }

@@ -117,6 +117,25 @@
       <version>${log4j.version}</version>
     </dependency>
 
+    <!--springfox的核心jar包-->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+    <!--springfox-ui的jar包(里面包含了swagger的界面静态文件)-->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+    <!--springfox依赖的jar包；-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.0</version>
+    </dependency>
+
     <!--junit单元测试-->
     <dependency>
       <groupId>junit</groupId>

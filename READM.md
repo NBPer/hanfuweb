@@ -1,0 +1,185 @@
+#  搭建汉服网
+
+我爱汉服网   www.52hanfu.com
+
+## 1.架构
+
+后端：
+
+​	spring+springmvc+mybatis+maven+redis+mysql+elaticsearch
+
+## 2.功能模块
+
+![image-20200830220814891](C:\Users\sj\AppData\Roaming\Typora\typora-user-images\image-20200830220814891.png)
+
+写真：展示汉服相关图片；以日期排序。以专辑为一套写真页面。包含收藏、点赞等功能。
+
+红人：以汉服红人为专题展示；
+
+美妆：主要是一些汉服美妆的教程；视频和图片均可。
+
+发型：主要是一些汉服搭配发型的教程；
+
+社区：关于汉服的一些社区活动。
+
+商城：关联汉服商城；
+
+## 3.数据库设计
+
+数据库设计：
+
+用户表（sys_user)
+
+| 字段            | 含义         |
+| --------------- | ------------ |
+| id              | 主键id       |
+| name            | 昵称         |
+| mobile          | 手机号       |
+| password        | 密码         |
+| email           | 邮箱         |
+| register_time   | 注册时间     |
+| login_time      | 登陆时间     |
+| last_login_time | 最近登陆时间 |
+| count           | 登陆次数     |
+
+角色表(sys_role)
+
+| 字段        | 含义         |
+| ----------- | ------------ |
+| id          | 主键id       |
+| name        | 角色名称     |
+| discription | 角色描述     |
+| create_time | 角色创建时间 |
+
+权限表(sys_permission)
+
+| 字段        | 含义         |
+| ----------- | ------------ |
+| id          | 主键id       |
+| p_id        | 父权限id     |
+| name        | 权限名称     |
+| discription | 权限描述     |
+| create_time | 权限创建时间 |
+
+用户角色表(sys_user_role)
+
+| 字段    | 含义   |
+| ------- | ------ |
+| id      | 记录id |
+| user_id | 用户id |
+| role_id | 角色id |
+
+角色权限表(sys_role_permission)
+
+| 字段          | 含义   |
+| ------------- | ------ |
+| id            | 记录id |
+| role_id       | 角色id |
+| permission_id | 权限id |
+
+人物表(tb_person)
+
+| 字段        | 含义       |
+| ----------- | ---------- |
+| id          | 红人主键id |
+| name        | 红人昵称   |
+| sex         | 性别       |
+| blogID      | 微博ID     |
+| address     | 坐标       |
+| sign        | 个性签名   |
+| regist_time | 注册时间   |
+
+页面表(tb_postpage)
+
+| 字段          | 含义               |
+| ------------- | ------------------ |
+| id            | 主键id             |
+| title         | 页面标题           |
+| discription   | 描述               |
+| cover_id      | 封面图片id         |
+| look_count    | 点击量             |
+| collect_count | 收藏量             |
+| create_time   | 创建时间           |
+| user_id       | 投稿人id（用户id） |
+
+图片表（tb_photo）
+
+| 字段        | 含义                           |
+| ----------- | ------------------------------ |
+| id          | 图片主键id                     |
+| name        | 图片名称                       |
+| discription | 图片描述                       |
+| fir_path    | 一级路径，/image               |
+| sec_path    | 二级路径，表示年，/2020        |
+| thr_path    | 三级路径，表示月份，/08        |
+| fou_path    | 四级路径，表示日期，/30        |
+| filename    | 文件名，30234211222.jpg        |
+| uri         | /image/2020/08/30234211222.jpg |
+| imput_time  | 上传时间                       |
+|             |                                |
+
+人物专辑表(tb_people_page)
+
+| 字段      | 含义   |
+| --------- | ------ |
+| id        | 记录id |
+| person_id | 人物id |
+| page_id   | 页面id |
+
+页面图片表(tb_page_photo)
+
+| 字段        | 含义   |
+| ----------- | ------ |
+| id          | 记录id |
+| postpage_id | 页面id |
+| photo_id    | 图片id |
+
+人物图片表(tb_people_photo)
+
+| 字段      | 含义   |
+| --------- | ------ |
+| id        | 记录id |
+| person_id | 人物id |
+| photo_id  | 图片id |
+
+标签表（tb_tag)
+
+| 字段 | 含义     |
+| ---- | -------- |
+| id   | 标签id   |
+| name | 标签名称 |
+
+页面标签表
+
+| 字段        | 含义   |
+| ----------- | ------ |
+| id          | 记录id |
+| postpage_id | 页面id |
+| tag_id      | 标签id |
+
+
+
+
+
+
+
+
+
+
+
+## 4.页面设计
+
+### 4.1首页
+
+效果图：
+
+![image-20201011082757299](C:\Users\sj\AppData\Roaming\Typora\typora-user-images\image-20201011082757299.png)
+
+登录页面：
+
+![image-20201011083236601](C:\Users\sj\AppData\Roaming\Typora\typora-user-images\image-20201011083236601.png)
+
+注册页面：
+
+![image-20201011083314166](C:\Users\sj\AppData\Roaming\Typora\typora-user-images\image-20201011083314166.png)
+

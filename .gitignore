@@ -2,6 +2,7 @@
 .idea/
 ./idea/
 ./idea/*
+*.iml
 
 # target
 target/
@@ -11,5 +12,5 @@ target/
 *.class
  
 # Log Files
-*.log
+*.log	
 

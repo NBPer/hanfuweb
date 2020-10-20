@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+* 功能描述：
+* @Author: sj
+* @Date: 2020/10/15 20:32
+*/
 @Service("userService")
 public class UserServiceImpl implements IUserService {
 
@@ -21,7 +26,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserEntity fineById(Integer id) {
-        return userDao.fineById(id);
+        return userDao.findById(id);
     }
 
     @Override

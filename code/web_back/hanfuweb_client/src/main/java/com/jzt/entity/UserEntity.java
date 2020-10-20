@@ -1,5 +1,10 @@
 package com.jzt.entity;
 
+/**
+* 功能描述：
+* @Author: sj
+* @Date: 2020/10/15 20:25
+*/
 public class UserEntity {
 
     private Integer id;

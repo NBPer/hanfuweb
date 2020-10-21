@@ -1,6 +1,7 @@
 package com.jzt.controller;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.jzt.comm.ResultModel;
 import com.jzt.dao.IPostPageDao;
 import com.jzt.entity.PostPageEntity;
 import com.jzt.entity.UserEntity;
@@ -50,15 +51,16 @@ public class PostPageController {
     @RequestMapping("/find/{id}")
     @ResponseBody
     @ApiOperation(value = "根据id获取用户信息", notes = "根据id获取用户信息", httpMethod = "GET", response = PostPageEntity.class)
-    public ResponseEntity find(@PathVariable("id") Integer id){
-        PostPageEntity postPageEntity = null;
+    public ResultModel find(@PathVariable("id") Integer id){
+        ResultModel reuslt = ResultModel.ok();
         try{
-            postPageEntity = postPageService.findById(id);
+            PostPageEntity postPageEntity = postPageService.findById(id);
+            reuslt.setData(postPageEntity);
             logger.info("result : " + postPageEntity);
         }catch (Exception e){
             logger.error("[findAll] find user by id error:"+e.getMessage(), e);
         }
-        return ResponseEntity.ok(postPageEntity);
+        return reuslt;
     }
 
     @RequestMapping("/save")

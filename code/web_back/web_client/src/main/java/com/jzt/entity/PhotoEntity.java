@@ -62,6 +62,11 @@ public class PhotoEntity {
      */
     private Timestamp imput_time;
 
+    /**
+     * 外键：主页id
+     */
+    private PostPageEntity postPage_id;
+
     public Long getId() {
         return id;
     }
@@ -142,19 +147,27 @@ public class PhotoEntity {
         this.imput_time = imput_time;
     }
 
-//    @Override
-//    public String toString() {
-//        return "PhotoEntity{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", discription='" + discription + '\'' +
-//                ", fir_path='" + fir_path + '\'' +
-//                ", sec_path='" + sec_path + '\'' +
-//                ", thr_path='" + thr_path + '\'' +
-//                ", fou_path='" + fou_path + '\'' +
-//                ", filename='" + filename + '\'' +
-//                ", uri='" + uri + '\'' +
-//                ", imput_time=" + imput_time +
-//                '}';
-//    }
+    public PostPageEntity getPostPage_id() {
+        return postPage_id;
+    }
+
+    public void setPostPage_id(PostPageEntity postPage_id) {
+        this.postPage_id = postPage_id;
+    }
+
+    @Override
+    public String toString() {
+        return "PhotoEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", discription='" + discription + '\'' +
+                ", fir_path='" + fir_path + '\'' +
+                ", sec_path='" + sec_path + '\'' +
+                ", thr_path='" + thr_path + '\'' +
+                ", fou_path='" + fou_path + '\'' +
+                ", filename='" + filename + '\'' +
+                ", uri='" + uri + '\'' +
+                ", imput_time=" + imput_time +
+                '}';
+    }
 }

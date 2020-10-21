@@ -15,7 +15,7 @@ import java.util.List;
  * @Author: sj
  * @Date: 2020/10/14 20:45
  */
-public class PostPageEntity {
+public class PostPageEntity implements Serializable{
 
     /**
      * 图片页面id
@@ -35,7 +35,7 @@ public class PostPageEntity {
     /**
      * 封面图片id
      */
-    private Long cover_id;
+    private PhotoEntity cover_id;
 
     /**
      * 点击量
@@ -55,12 +55,11 @@ public class PostPageEntity {
     /**
      * 投稿人（用户id）
      */
-    private Integer user_id;
+    private UserEntity user_id;
 
     private List<PhotoEntity> photoEntities;
 
     private List<TagEntity> tagEntities;
-
 
     public Integer getId() {
         return id;
@@ -86,11 +85,11 @@ public class PostPageEntity {
         this.discription = discription;
     }
 
-    public Long getCover_id() {
+    public PhotoEntity getCover_id() {
         return cover_id;
     }
 
-    public void setCover_id(Long cover_id) {
+    public void setCover_id(PhotoEntity cover_id) {
         this.cover_id = cover_id;
     }
 
@@ -118,11 +117,11 @@ public class PostPageEntity {
         this.create_time = create_time;
     }
 
-    public Integer getUser_id() {
+    public UserEntity getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Integer user_id) {
+    public void setUser_id(UserEntity user_id) {
         this.user_id = user_id;
     }
 

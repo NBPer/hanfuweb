@@ -1,12 +1,8 @@
 package com.jzt.controller;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.jzt.comm.ResultModel;
-import com.jzt.dao.IPostPageDao;
 import com.jzt.entity.PostPageEntity;
-import com.jzt.entity.UserEntity;
 import com.jzt.service.IPostPageService;
-import com.jzt.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
@@ -36,7 +32,7 @@ public class PostPageController {
 
     @RequestMapping("/findAll")
     @ResponseBody
-    @ApiOperation(value = "获取所有页面信息", notes = "获取所有页面信息", httpMethod = "GET", response = PostPageEntity.class)
+    @ApiOperation(value = "获取所有页面集合信息", notes = "获取所有页面集合信息", httpMethod = "GET", response = PostPageEntity.class)
     public ResponseEntity findAll(){
         List<PostPageEntity> postPageEntityList = null;
         try{

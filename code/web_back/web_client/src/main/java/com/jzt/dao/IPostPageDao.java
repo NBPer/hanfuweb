@@ -2,7 +2,6 @@ package com.jzt.dao;
 
 import com.jzt.entity.PostPageEntity;
 import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.mapping.FetchType;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +16,19 @@ import java.util.List;
 public interface IPostPageDao {
 
     @Select("select * from tb_postpage")
+    @Results(id = "postPageMapAll", value = {
+            @Result(id = true, column = "id", property = "id"),
+            @Result(column = "title", property = "title"),
+            @Result(column = "discription", property = "discription"),
+            @Result(column = "id", property = "cover_id", javaType=com.jzt.entity.PhotoEntity.class,
+                    one = @One(select = "com.jzt.dao.IPhotoDao.findById")),
+            @Result(column = "look_count", property = "look_count"),
+            @Result(column = "collect_count", property = "collect_count"),
+            @Result(column = "create_time", property = "create_time"),
+            @Result(column = "id", property = "user_id", javaType=com.jzt.entity.UserEntity.class,
+                    one = @One(select = "com.jzt.dao.IUserDao.findById")),
+            @Result(column = "imput_time", property = "imput_time"),
+    })
     List<PostPageEntity> findAll();
 
     @Select("select * from tb_postpage tp where id=#{id}")
@@ -42,4 +54,19 @@ public interface IPostPageDao {
     })
     PostPageEntity findById(Integer id);
 
+    @Select("select * from tb_postpage tp inner join tb_home_post thp on tp.id = thp.postpage_id where thp.homepage_id=#{homepage_id}")
+    @Results(id = "postPageMap2", value = {
+            @Result(id = true, column = "id", property = "id"),
+            @Result(column = "title", property = "title"),
+            @Result(column = "discription", property = "discription"),
+            @Result(column = "id", property = "cover_id", javaType=com.jzt.entity.PhotoEntity.class,
+                    one = @One(select = "com.jzt.dao.IPhotoDao.findById")),
+            @Result(column = "look_count", property = "look_count"),
+            @Result(column = "collect_count", property = "collect_count"),
+            @Result(column = "create_time", property = "create_time"),
+            @Result(column = "id", property = "user_id", javaType=com.jzt.entity.UserEntity.class,
+                    one = @One(select = "com.jzt.dao.IUserDao.findById")),
+            @Result(column = "imput_time", property = "imput_time"),
+    })
+    List<PostPageEntity> findByHomePageId(Integer homepage_id);
 }

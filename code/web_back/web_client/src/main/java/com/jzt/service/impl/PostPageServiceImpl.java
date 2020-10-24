@@ -1,5 +1,7 @@
 package com.jzt.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.jzt.dao.IPostPageDao;
 import com.jzt.dao.IUserDao;
 import com.jzt.entity.PostPageEntity;
@@ -46,5 +48,13 @@ public class PostPageServiceImpl implements IPostPageService {
     @Override
     public void delete(Integer id) {
 
+    }
+
+    @Override
+    public PageInfo<PostPageEntity> findAllByPage(int currPage, int pageSize) {
+        PageHelper.startPage(currPage, pageSize);
+        List<PostPageEntity> postPageEntityList = postPageDao.findAllByPage();
+        PageInfo<PostPageEntity> pageInfo = new PageInfo<>(postPageEntityList);
+        return pageInfo;
     }
 }

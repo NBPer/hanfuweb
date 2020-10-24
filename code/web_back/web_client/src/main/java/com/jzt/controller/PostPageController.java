@@ -1,10 +1,12 @@
 package com.jzt.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.jzt.comm.ResultModel;
 import com.jzt.entity.PostPageEntity;
 import com.jzt.service.IPostPageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Param;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -37,6 +40,20 @@ public class PostPageController {
         List<PostPageEntity> postPageEntityList = null;
         try{
             postPageEntityList = postPageService.findAll();
+            logger.info("result : " + postPageEntityList);
+        }catch (Exception e){
+            logger.error("[findAll] find all users error:"+e.getMessage(), e);
+        }
+        return ResponseEntity.ok(postPageEntityList);
+    }
+
+    @RequestMapping("/findAll2")
+    @ResponseBody
+    @ApiOperation(value = "获取所有页面集合信息（分页）", notes = "获取所有页面集合信息（分页）", httpMethod = "GET", response = PostPageEntity.class)
+    public ResponseEntity findAll2(@RequestParam("currPage") Integer currPage, @RequestParam("pageSize") Integer pageSize){
+        PageInfo<PostPageEntity> postPageEntityList = null;
+        try{
+            postPageEntityList = postPageService.findAllByPage(currPage, pageSize);
             logger.info("result : " + postPageEntityList);
         }catch (Exception e){
             logger.error("[findAll] find all users error:"+e.getMessage(), e);

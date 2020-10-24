@@ -31,6 +31,22 @@ public interface IPostPageDao {
     })
     List<PostPageEntity> findAll();
 
+    @Select("select * from tb_postpage")
+    @Results(id = "postPageMapAllByPage", value = {
+            @Result(id = true, column = "id", property = "id"),
+            @Result(column = "title", property = "title"),
+            @Result(column = "discription", property = "discription"),
+            @Result(column = "id", property = "cover_id", javaType=com.jzt.entity.PhotoEntity.class,
+                    one = @One(select = "com.jzt.dao.IPhotoDao.findById")),
+            @Result(column = "look_count", property = "look_count"),
+            @Result(column = "collect_count", property = "collect_count"),
+            @Result(column = "create_time", property = "create_time"),
+            @Result(column = "id", property = "user_id", javaType=com.jzt.entity.UserEntity.class,
+                    one = @One(select = "com.jzt.dao.IUserDao.findById")),
+            @Result(column = "imput_time", property = "imput_time"),
+    })
+    List<PostPageEntity> findAllByPage();
+
     @Select("select * from tb_postpage tp where id=#{id}")
     @Results(id = "postPageMap", value = {
             @Result(id = true, column = "id", property = "id"),

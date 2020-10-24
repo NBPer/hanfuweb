@@ -11,7 +11,6 @@ import org.apache.ibatis.annotations.*;
  */
 public interface IHomePageDao {
 
-
     @Select("select * from tb_homepage th where th.id=#{id}")
     @Results(id = "homePageMap", value = {
             @Result(id = true, column = "id", property = "id"),

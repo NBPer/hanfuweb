@@ -29,6 +29,17 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- 配置多媒体文件解析器 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设定默认编码 -->
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!-- 设定文件上传的最大值2MB， 2*1024*1024 -->
+        <property name="maxUploadSize" value="2097152"></property>
+        <!--resolveLazily属性启用是为了推迟文件解析，以便在UploadAction 中捕获文件大小异常-->
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
     <!--过滤静态资源-->
 <!--    <mvc:resources mapping="/css/" location="/css/**" />
     <mvc:resources mapping="/images/" location="/images/**" />

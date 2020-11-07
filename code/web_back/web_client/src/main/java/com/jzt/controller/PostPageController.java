@@ -12,10 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -79,7 +76,7 @@ public class PostPageController {
     @RequestMapping("/save")
     @ResponseBody
     @ApiOperation(value = "保存用户信息", notes = "保存用户信息", httpMethod = "POST", response = PostPageEntity.class)
-    public ResponseEntity save(PostPageEntity postPage){
+    public ResponseEntity save(@RequestBody PostPageEntity postPage){
         try{
             postPageService.save(postPage);
         }catch (Exception e){

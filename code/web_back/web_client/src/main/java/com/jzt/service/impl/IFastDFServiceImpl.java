@@ -1,6 +1,5 @@
 package com.jzt.service.impl;
 
-import com.jzt.entity.UserEntity;
 import com.jzt.service.IFastDFSService;
 import com.jzt.util.FastDFSUtil;
 import org.springframework.stereotype.Service;

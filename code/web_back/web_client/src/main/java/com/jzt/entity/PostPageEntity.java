@@ -1,12 +1,11 @@
 package com.jzt.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ import java.util.List;
  * @Author: sj
  * @Date: 2020/10/14 20:45
  */
-public class PostPageEntity implements Serializable{
+public class PostPageEntity{
 
     /**
      * 图片页面id
@@ -35,7 +34,7 @@ public class PostPageEntity implements Serializable{
     /**
      * 封面图片id
      */
-    private PhotoEntity cover_id;
+    private PhotoEntity photoEntity;
 
     /**
      * 点击量
@@ -50,12 +49,14 @@ public class PostPageEntity implements Serializable{
     /**
      * 页面创建时间
      */
-    private Timestamp create_time;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date create_time;
 
     /**
      * 投稿人（用户id）
      */
-    private UserEntity user_id;
+    private UserEntity userEntity;
 
     private List<PhotoEntity> photoEntities;
 
@@ -85,14 +86,6 @@ public class PostPageEntity implements Serializable{
         this.discription = discription;
     }
 
-    public PhotoEntity getCover_id() {
-        return cover_id;
-    }
-
-    public void setCover_id(PhotoEntity cover_id) {
-        this.cover_id = cover_id;
-    }
-
     public Integer getLook_count() {
         return look_count;
     }
@@ -109,20 +102,28 @@ public class PostPageEntity implements Serializable{
         this.collect_count = collect_count;
     }
 
-    public Timestamp getCreate_time() {
+    public Date getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(Timestamp create_time) {
+    public void setCreate_time(Date create_time) {
         this.create_time = create_time;
     }
 
-    public UserEntity getUser_id() {
-        return user_id;
+    public PhotoEntity getPhotoEntity() {
+        return photoEntity;
     }
 
-    public void setUser_id(UserEntity user_id) {
-        this.user_id = user_id;
+    public void setPhotoEntity(PhotoEntity photoEntity) {
+        this.photoEntity = photoEntity;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
     public List<PhotoEntity> getPhotoEntities() {
@@ -147,11 +148,11 @@ public class PostPageEntity implements Serializable{
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", discription='" + discription + '\'' +
-                ", cover_id=" + cover_id +
+                ", cover_id=" + photoEntity +
                 ", look_count=" + look_count +
                 ", collect_count=" + collect_count +
                 ", create_time=" + create_time +
-                ", user_id=" + user_id +
+                ", user_id=" + userEntity +
                 ", photoEntities=" + photoEntities +
                 ", tagEntities=" + tagEntities +
                 '}';

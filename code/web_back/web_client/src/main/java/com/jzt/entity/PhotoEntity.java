@@ -1,9 +1,12 @@
 package com.jzt.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
 * 功能描述：图片实体类
@@ -60,7 +63,9 @@ public class PhotoEntity {
     /**
      * 上传时间
      */
-    private Timestamp imput_time;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date imput_time;
 
     /**
      * 外键：主页id
@@ -139,11 +144,12 @@ public class PhotoEntity {
         this.uri = uri;
     }
 
-    public Timestamp getImput_time() {
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    public Date getImput_time() {
         return imput_time;
     }
 
-    public void setImput_time(Timestamp imput_time) {
+    public void setImput_time(Date imput_time) {
         this.imput_time = imput_time;
     }
 

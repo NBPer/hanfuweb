@@ -18,7 +18,7 @@ public interface IPostPageService {
 
     PostPageEntity findById(Integer id);
 
-    void save(PostPageEntity user);
+    void save(PostPageEntity user) throws InterruptedException;
 
     void update(PostPageEntity user);
 

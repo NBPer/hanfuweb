@@ -1,6 +1,10 @@
 package com.jzt.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,7 +27,9 @@ public class HomePageEntity {
 
     private String sign;
 
-    private Timestamp regist_time;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date regist_time;
 
     private List<PostPageEntity> postPageEntities;
 
@@ -75,11 +81,11 @@ public class HomePageEntity {
         this.sign = sign;
     }
 
-    public Timestamp getRegist_time() {
+    public Date getRegist_time() {
         return regist_time;
     }
 
-    public void setRegist_time(Timestamp regist_time) {
+    public void setRegist_time(Date regist_time) {
         this.regist_time = regist_time;
     }
 

@@ -35,13 +35,14 @@ public class MQComsumer {
 
     private void initComsumer() {
         Properties props = new Properties();
-        props.setProperty("bootstrap.servers", "192.168.31.121:9092");//env.getProperty("192.168.31.121:9092")
+//        props.setProperty("bootstrap.servers", "192.168.31.121:9092");//env.getProperty("192.168.31.121:9092")
+        props.setProperty("bootstrap.servers", "182.61.149.221:9092");
         //每个消费者分配独立的组号
         props.put("group.id", "TEST_GROUP");//env.getProperty("TEST_GROU
         //为true时，comsumer自动提交偏移量offset
-        props.setProperty("auto.commit.enabler", "true");
+//        props.setProperty("auto.commit.enabler", "true");
         //自动提交的时间间隔
-        props.setProperty("auto.commit.interval.ms", "1000");
+//        props.setProperty("auto.commit.interval.ms", "1000");
         //会话超时时间，超过这个时间
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
